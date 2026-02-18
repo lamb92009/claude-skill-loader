@@ -46,6 +46,14 @@ Session ends → skill-cleanup reads manifest and removes fetched skills
 
 ---
 
+## Example Output
+
+*skill-loader analyzing project context and recommending skills*
+
+![skill-loader analyzing project context and recommending skills](docs/skill-loader-analysis.png)
+
+---
+
 ## Token Savings
 
 Every skill loaded at startup contributes its description to Claude's system prompt — before you've typed a word. At scale this adds up fast.
