@@ -46,6 +46,23 @@ Session ends → skill-cleanup reads manifest and removes fetched skills
 
 ---
 
+## Token Savings
+
+Every skill loaded at startup contributes its description to Claude's system prompt — before you've typed a word. At scale this adds up fast.
+
+| Scenario | Skills loaded | Description tokens |
+|----------|--------------|-------------------|
+| Always-on (101 skills) | 101 | ~5,000 |
+| **With skill-loader** | | |
+| → Baseline (permanent skills only) | 4–6 | ~250 |
+| → After fetching session skills | +3–8 | ~400–650 total |
+
+**Savings: ~4,350–4,600 tokens per session** just from descriptions alone.
+
+Note: this is description tokens only — the `name` and `description` frontmatter that appears in Claude's skill list. The full skill content (the actual instructions) only loads into context when you explicitly invoke a skill. That cost is unchanged either way; skill-loader just ensures you're not paying the description overhead for skills you'll never touch this session.
+
+---
+
 ## Setup
 
 Before installing, open Claude Code and run this prompt. It will gather your configuration and install everything correctly:
